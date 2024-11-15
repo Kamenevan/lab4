@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Multilingual Site
 
 on:
   release:
@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
       - name: Checkout code
         uses: actions/checkout@v4
         run: |
