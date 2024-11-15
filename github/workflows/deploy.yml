@@ -23,6 +23,7 @@ jobs:
             cp -r "./${file}" "$VERSION_DIR/"
           
           done
+          #создание ветки ph-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
