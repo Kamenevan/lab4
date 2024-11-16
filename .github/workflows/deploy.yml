@@ -18,7 +18,8 @@ jobs:
         mkdir -p "$VERSION_DIR"
         
         files_to_copy=("en" "ru" "index.html")
-       
+        
+        files_to_copy=("en" "ru" "index.html")
         for file in "${files_to_copy[@]}"; do
           cp -r "./${file}" "$VERSION_DIR/"
         done
