@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Checkout code #загрузка текущей версии кода, чтобы выполнить данныую задачу
       uses: actions/checkout@v4
-#создание папки для текущей версии сайта
+
     - name: Create versioned directory
       run: |
         VERSION=${{ github.ref_name }}
