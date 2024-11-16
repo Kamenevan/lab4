@@ -16,11 +16,9 @@ jobs:
         VERSION=${{ github.ref_name }}
         VERSION_DIR="./public/v${VERSION}"
         mkdir -p "$VERSION_DIR"
-#список файлов и каталогов для копирования
-        files_to_copy=("en" "ru" "index.html") 
-
-#копирование в папку с нужной версией
+        
         files_to_copy=("en" "ru" "index.html")
+       
         for file in "${files_to_copy[@]}"; do
           cp -r "./${file}" "$VERSION_DIR/"
         done
