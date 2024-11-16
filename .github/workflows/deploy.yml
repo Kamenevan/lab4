@@ -1,5 +1,5 @@
 name: Deploy Multilingual Site
-
+#пайплайн должен запускаться при публикации нового релиза
 on:
   release:
     types: [published]
@@ -8,25 +8,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - name: Checkout code #загрузка текущей версии кода, чтобы выполнить данныую задачу
       uses: actions/checkout@v4
-
+#создание папки для текущей версии сайта
     - name: Create versioned directory
       run: |
         VERSION=${{ github.ref_name }}
         VERSION_DIR="./public/v${VERSION}"
         mkdir -p "$VERSION_DIR"
+#список файлов и каталогов для копирования
+        files_to_copy=("en" "ru" "index.html") 
 
-       
-        files_to_copy=("en" "ru" "index.html") #список файлов и каталогов для копирования
-
-        #копирование в папку с версией
+#копирование в папку с нужной версией
         files_to_copy=("en" "ru" "index.html")
         for file in "${files_to_copy[@]}"; do
           cp -r "./${file}" "$VERSION_DIR/"
         done
         
-#создание ветки gh-pages
+#создание ветки gh-pages. Загрузка файлов из папки ./public в ветку gh-pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
